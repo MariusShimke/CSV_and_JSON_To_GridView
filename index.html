@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+        <title>CVS and JSON to GridView</title>
+
+        <link href="assets/css/main.css" media="all" rel="stylesheet"/>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">		
+		
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>		
+		<script type="text/javascript" src="data/itemlist.json"></script>
+		<script type="text/javascript" src="app.js"></script>
+    </head>
+    <body onload="load()">
+        
+		<div class="container">	
+	
+			<div class="row">
+			<h1>CVS And JSON Report</h1>	
+				<div class="panel panel-primary filterable">
+					<div class="panel-heading row">
+						<div class="col-sm-6 col-md-6 col-lg-6"><h3 class="panel-title">Cost &amp; Sell Rates</h3></div>
+						<div class="col-sm-6 col-md-6 col-lg-6">
+							<span id="spn-addNewLine" Title="Add New Line"></span>
+						</div>						
+					</div>
+					<table id="mytable" class="table">
+						<thead>
+							<tr class="filters">
+								<th id="thCode" title="Click to Sort"><input type="text" class="form-control" placeholder="Product Code" disabled></th>
+								<th id="thDesc" title="Click to Sort"><input type="text" class="form-control" placeholder="Description" disabled></th>
+								<th id="thQuant" title="Click to Sort"><input type="text" class="form-control" placeholder="Quantity" disabled></th>
+								<th class="saveBtnContainer"></th>
+								<th id="thCost" title="Click to Sort"><input type="text" class="form-control" placeholder="Total Cost Price" disabled></th>
+								<th id="thSell" title="Click to Sort"><input type="text" class="form-control" placeholder=" Total Sell Price" disabled></th>
+								<th><button class="btn btn-default btn-xs btn-filter">Search</button></th>
+							</tr>
+						</thead>
+						<tbody id="table-content">							
+							<!-- content is comming from JS -->	
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>		
+		
+		<div id="deleteMsg" class="hide">
+			<div id="deleteMsgInner">
+				<div id="dltMsgTopContainer">
+					<span id="dltMsgHeader">Delete Record</span>
+				</div>
+				<label for="dltCodeInput">Code: </label><input id="dltCodeInput" type="text" readonly></input><br>
+				<label for="dltJobInput">Job Number: </label><input id="dltJobInput" type="text" readonly></input><br>
+				<label for="dltDescriptionInput"><span>Description: </label><input id="dltDescriptionInput" type="text" readonly></input>
+				<div id="msgBtnContainer">
+					<button id="btnDlt" class="msgBtn" onclick="hideMsg('delete')">Delete</button>
+					<button id="btnCnl" class="msgBtn" onclick="hideMsg('cancel')">Cancel</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="addNewMsg" class="hide">
+			<div id="addNewMsgInner">
+				<div id="addNewTopContainer">
+					<span id="addNewMsgHeader">Add New Record</span>
+				</div>
+				<label for="addCodeInput">Code: </label><input id="addCodeInput" type="text" ></input><br>
+				<label for="addJobInput">Job Number: </label><input id="addJobInput" type="text" ></input><br>
+				<label for="addDescriptionInput"><span>Description: </label><input id="addDescriptionInput" type="text" ></input>
+				<label for="addQuantityInput"><span>Quantity: </label><input id="addQuantityInput" type="text" ></input>
+				<div id="addBtnContainer">
+					<button id="btnAdd" class="msgBtn" onclick="addNewLine()">Submit</button>
+					<button id="btnAddCnl" class="msgBtn" onclick="hideMsg('cancel')">Cancel</button>
+				</div>
+			</div>
+		</div>
+		
+		
+    </body>
+</html>
